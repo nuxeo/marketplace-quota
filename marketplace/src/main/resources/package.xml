@@ -1,0 +1,114 @@
+<!-- See documentation at http://doc.nuxeo.com/x/HgIz -->
+<package type="addon" name="nuxeo-quota" version="@VERSION@">
+  <title>Nuxeo Quota</title>
+  <description>
+    <p>This addon provides a pluggable infrastructure to be able to collect some
+      real time statistics about content in the repository and enforce rules
+      (like Quota).
+    </p>
+    <h1>Principles</h1>
+
+    <p>
+      The QuotaStatsService service provides an extension point to register
+      QuotaStatsUpdater that will be responsible for computing the statistics.
+      <br />
+      The QuotaStatsUpdater will be called:
+    </p>
+    <ul>
+      <li>via a Synchronous Event Listener</li>
+      <li>in batch mode for initial computation</li>
+    </ul>
+    <p>The batch mode is triggered via the Admin Center.</p>
+
+    <h1>Default contributions</h1>
+
+    <p>There are two default contributions to QuotaStatsService:</p>
+
+    <h2>documentsCountUpdater</h2>
+
+    <p>
+      Counts the number non folderish objects and maintain the total number on
+      the
+      parent.
+      <br />
+      Count data is stored in a documents_count_statistics.xsd
+      schema that is
+      automatically added to each folderish document during
+      computation.
+    </p>
+
+    <h2>documentsSizeUpdater</h2>
+
+    <p>
+      Computes Blob size on each item in the content tree.
+      <br />
+      Each content
+      item in the tree will have an additional schema
+      documents_size_statistics.xsd
+      that contains:
+    </p>
+    <ul>
+      <li>the inner size of the object (innerSize): size of all the blobs in
+        this document (in bytes)
+      </li>
+      <li>the total size of the object (totalSize): inner size + size of all
+        the
+        children (in bytes)
+      </li>
+      <li>the allowed maximum total size (maxSize): maximum quota</li>
+    </ul>
+    <p>If the maxSize is set to -1, then no quota check is performed, otherwise
+      maxSize enforcement is done synchronously.
+    </p>
+
+    <p>documentsSizeUpdater works in a two phases manner:</p>
+    <ul>
+      <li>synchronously : check what has changed in the document and checks
+        quota
+      </li>
+      <li>asynchronously : update counters on item and all parents</li>
+    </ul>
+    <p>The synchronous execution that checks Quota will rollback the transaction
+      and raise a QuotaExceededException if the current transaction would break
+      the
+      quota rule.
+    </p>
+
+    <p>The current implementation of documentSizeUpdater:</p>
+    <ul>
+      <li>handles checks create / update / delete / move / copy</li>
+      <li>takes into accounts the versions (Document with 2 versions will have
+        a
+        total size of inner size + size of the versions).
+      </li>
+    </ul>
+
+    <h1>Automation API</h1>
+
+    <p>Two Automation Operations are defined to be able to remotely manage the
+      Quota on a given Document:
+    </p>
+    <ul>
+      <li>Quotas.GetInfo: to retrieve informations about the Quota Info of a
+        Document (innerSize, totalSize and maxSize)
+      </li>
+      <li>Quotas.SetMaxSize: to define the maximum size allowed in a given
+        Document
+      </li>
+    </ul>
+  </description>
+  <home-page>http://doc.nuxeo.com/x/DwCw</home-page>
+  <vendor>Nuxeo</vendor>
+  <installer restart="true" />
+  <uninstaller restart="true" />
+  <!-- <hotreload-support>false</hotreload-support> -->
+  <!-- <require-terms-and-conditions-acceptance>false</require-terms-and-conditions-acceptance> -->
+  <nuxeo-validation>nuxeo_certified</nuxeo-validation>
+  <production-state>production_ready</production-state>
+  <supported>true</supported>
+  <platforms>
+    <platform>cap-@DISTRIB_VERSION@</platform>
+  </platforms>
+  <license>LGPL</license>
+  <license-url>http://www.gnu.org/licenses/lgpl.html</license-url>
+</package>
