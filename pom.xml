@@ -4,17 +4,17 @@
   <parent>
     <groupId>org.nuxeo.ecm.distribution</groupId>
     <artifactId>nuxeo-distribution</artifactId>
-    <version>5.7-SNAPSHOT</version>
+    <version>5.6</version>
   </parent>
 
   <groupId>org.nuxeo.marketplace.quota</groupId>
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <name>Nuxeo Quota Marketplace package</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <properties>
-    <marketplace.quota.version>1.0-SNAPSHOT</marketplace.quota.version>
+    <marketplace.quota.version>1.0</marketplace.quota.version>
   </properties>
 
   <modules>
