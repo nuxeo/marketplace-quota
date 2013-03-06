@@ -48,12 +48,12 @@
       that contains:
     </p>
     <ul>
-      <li>the inner size of the object (innerSize): size of all the blobs in
-        this document (in bytes)
-      </li>
       <li>the total size of the object (totalSize): inner size + size of all
-        the
-        children (in bytes)
+        the children (in bytes) + size of all versions
+      </li>
+      <li>the total size of deleted documents (sizeTrash) that are still in trash
+      </li>
+      <li>the total size of the archived versions (sizeVersions) for a document.
       </li>
       <li>the allowed maximum total size (maxSize): maximum quota</li>
     </ul>

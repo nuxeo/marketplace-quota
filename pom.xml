@@ -15,7 +15,8 @@
 
   <properties>
     <marketplace.quota.version>1.1-SNAPSHOT</marketplace.quota.version>
-  </properties>
+    <nuxeo.quota.version>5.7-SNAPSHOT</nuxeo.quota.version>
+   </properties>
 
   <modules>
     <module>ear</module>
@@ -47,6 +48,21 @@
         <artifactId>marketplace</artifactId>
         <version>${marketplace.quota.version}</version>
         <type>zip</type>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.ecm.platform</groupId>
+        <artifactId>nuxeo-quota-core</artifactId>
+        <version>${nuxeo.quota.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.ecm.platform</groupId>
+        <artifactId>nuxeo-quota-web</artifactId>
+        <version>${nuxeo.quota.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.ecm.platform</groupId>
+        <artifactId>nuxeo-quota-automation</artifactId>
+        <version>${nuxeo.quota.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
