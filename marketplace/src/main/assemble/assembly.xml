@@ -1,4 +1,4 @@
-<project name="nuxeo-assembly"
+<project name="quota-assembly"
          default="build"
          xmlns:nx="urn:nuxeo-build"
          xmlns:artifact="urn:nuxeo-artifact">
@@ -40,31 +40,35 @@
 
     <!-- Generate install.xml file -->
     <var name="install.content" value="&lt;install&gt;" />
-    <var name="install.content" value="${install.content}${line.separator}
+    <var name="install.content"
+         value="${install.content}${line.separator}
      &lt;update file=&quot;${package.root}/install/bundles&quot; todir=&quot;${env.bundles}&quot; /&gt;" />
     <if>
       <available file="${outdir}/marketplace/install/lib" />
       <then>
-        <var name="install.content" value="${install.content}${line.separator}
+        <var name="install.content"
+             value="${install.content}${line.separator}
      &lt;update file=&quot;${package.root}/install/lib&quot; todir=&quot;${env.lib}&quot; /&gt;" />
       </then>
     </if>
     <if>
       <available file="${outdir}/marketplace/install/templates" />
       <then>
-        <var name="install.content" value="${install.content}${line.separator}
+        <var name="install.content"
+             value="${install.content}${line.separator}
      &lt;copy dir=&quot;${package.root}/install/templates&quot; todir=&quot;${env.templates}&quot; overwrite=&quot;true&quot; /&gt;${line.separator}
      &lt;config addtemplate=&quot;quota&quot; /&gt;" />
       </then>
     </if>
-    <var name="install.content" value="${install.content}${line.separator}
+    <var name="install.content"
+         value="${install.content}${line.separator}
      &lt;/install&gt;${line.separator}" />
-    <echo file="${outdir}/marketplace/install.xml" message="${install.content}" />
+    <echo file="${outdir}/marketplace/install.xml"
+          message="${install.content}" />
 
     <zip destfile="${maven.project.build.directory}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
          basedir="${maven.project.build.directory}/marketplace" />
     <artifact:attach file="${maven.project.build.directory}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
-                     target="${maven.project.groupId}:${maven.project.artifactId}"
                      type="zip" />
   </target>
 

@@ -1,4 +1,4 @@
-<project name="nuxeo-assembly"
+<project name="quota-ear-assembly"
          default="build"
          xmlns:nx="urn:nuxeo-build"
          xmlns:artifact="urn:nuxeo-artifact">
@@ -26,7 +26,7 @@
   </target>
 
   <target name="build" depends="init" description="Build Nuxeo Quota EAR">
-    <echo>Building default Nuxeo Quota EAR</echo>
+    <echo level="info">Building default Nuxeo Quota EAR</echo>
     <delete failonerror="false" dir="${nuxeo.ear}" />
     <mkdir dir="${nuxeo.ear}" />
     <antcall target="build-standard" />
@@ -52,7 +52,6 @@
     <zip destfile="${outdir}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
          basedir="${nuxeo.ear}" />
     <artifact:attach file="${outdir}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
-                     target="${maven.project.groupId}:${maven.project.artifactId}"
                      type="zip" />
   </target>
 
