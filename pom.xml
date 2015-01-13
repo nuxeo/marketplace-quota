@@ -10,10 +10,10 @@
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <name>Nuxeo Quota Marketplace package</name>
-  <version>1.4.1-SNAPSHOT</version>
+  <version>1.5.0-SNAPSHOT</version>
 
   <properties>
-    <marketplace.quota.version>1.4.1-SNAPSHOT</marketplace.quota.version>
+    <marketplace.quota.version>1.5.0-SNAPSHOT</marketplace.quota.version>
     <nuxeo.quota.version>7.1-SNAPSHOT</nuxeo.quota.version>
    </properties>
 
