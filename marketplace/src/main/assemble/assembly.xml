@@ -1,17 +1,12 @@
-<project name="quota-assembly"
-         default="build"
-         xmlns:nx="urn:nuxeo-build"
-         xmlns:artifact="urn:nuxeo-artifact">
+<project name="quota-assembly" default="build" xmlns:nx="urn:nuxeo-build" xmlns:artifact="urn:nuxeo-artifact">
   <taskdef resource="org/nuxeo/build/antlib.xml" uri="urn:nuxeo-build" />
-  <taskdef resource="org/nuxeo/build/artifact/antlib.xml"
-           uri="urn:nuxeo-artifact" />
+  <taskdef resource="org/nuxeo/build/artifact/antlib.xml" uri="urn:nuxeo-artifact" />
   <taskdef resource="net/sf/antcontrib/antlib.xml" />
 
   <target name="build" description="Build Nuxeo Quota Marketplace package">
     <tstamp />
     <property name="outdir" value="${maven.project.build.directory}" />
-    <delete failonerror="false"
-            dir="${maven.project.build.directory}/marketplace" />
+    <delete failonerror="false" dir="${maven.project.build.directory}/marketplace" />
     <mkdir dir="${maven.project.build.directory}/marketplace" />
     <copy todir="${maven.project.build.directory}/marketplace">
       <fileset dir="src/main/resources" />
@@ -60,11 +55,9 @@
      &lt;config addtemplate=&quot;quota&quot; /&gt;" />
       </then>
     </if>
-    <var name="install.content"
-         value="${install.content}${line.separator}
+    <var name="install.content" value="${install.content}${line.separator}
      &lt;/install&gt;${line.separator}" />
-    <echo file="${outdir}/marketplace/install.xml"
-          message="${install.content}" />
+    <echo file="${outdir}/marketplace/install.xml" message="${install.content}" />
 
     <zip destfile="${maven.project.build.directory}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
          basedir="${maven.project.build.directory}/marketplace" />
