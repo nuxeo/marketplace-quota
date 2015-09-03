@@ -17,9 +17,9 @@
     </copy>
     <copy todir="${maven.project.build.directory}">
       <!-- Base distribution EAR -->
-      <artifact:resolveFile key="org.nuxeo.ecm.distribution:nuxeo-distribution-cap::zip" />
+      <artifact:file key="org.nuxeo.ecm.distribution:nuxeo-distribution-cap::zip" />
       <!-- Your custom EAR -->
-      <artifact:resolveFile key="org.nuxeo.marketplace.quota:ear::zip" />
+      <artifact:file key="org.nuxeo.marketplace.quota:ear::zip" />
     </copy>
     <!-- Your MP only needs to include files not already provided by the base distribution -->
     <nx:zipdiff file1="${maven.project.build.directory}/ear-${marketplace.quota.version}.zip"
