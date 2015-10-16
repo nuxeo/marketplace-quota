@@ -1,22 +1,17 @@
-<project name="quota-assembly"
-         default="build"
-         xmlns:nx="urn:nuxeo-build"
-         xmlns:artifact="urn:nuxeo-artifact">
+<project name="quota-assembly" default="build" xmlns:nx="urn:nuxeo-build" xmlns:artifact="urn:nuxeo-artifact">
   <taskdef resource="org/nuxeo/build/antlib.xml" uri="urn:nuxeo-build" />
-  <taskdef resource="org/nuxeo/build/artifact/antlib.xml"
-           uri="urn:nuxeo-artifact" />
+  <taskdef resource="org/nuxeo/build/artifact/antlib.xml" uri="urn:nuxeo-artifact" />
   <taskdef resource="net/sf/antcontrib/antlib.xml" />
 
   <target name="build" description="Build Nuxeo Quota Marketplace package">
     <tstamp />
     <property name="outdir" value="${maven.project.build.directory}" />
-    <delete failonerror="false"
-            dir="${maven.project.build.directory}/marketplace" />
+    <delete failonerror="false" dir="${maven.project.build.directory}/marketplace" />
     <mkdir dir="${maven.project.build.directory}/marketplace" />
     <copy todir="${maven.project.build.directory}/marketplace">
       <fileset dir="src/main/resources" />
       <filterset>
-        <filter token="VERSION" value="${marketplace.quota.version}" />
+        <filter token="VERSION" value="${maven.project.version}" />
         <filter token="DISTRIB_VERSION" value="${nuxeo.distribution.version}" />
       </filterset>
     </copy>
@@ -27,13 +22,13 @@
       <artifact:resolveFile key="org.nuxeo.marketplace.quota:ear::zip" />
     </copy>
     <!-- Your MP only needs to include files not already provided by the base distribution -->
-    <nx:zipdiff file1="${maven.project.build.directory}/ear-${marketplace.quota.version}.zip"
+    <nx:zipdiff file1="${maven.project.build.directory}/ear-${maven.project.version}.zip"
                 file2="${maven.project.build.directory}/nuxeo-distribution-cap-${nuxeo.distribution.version}.zip"
                 includesfile="${maven.project.build.directory}/includes"
                 excludesfile="${maven.project.build.directory}/excludesfile"
                 patternsetid="quota.versus.cap">
     </nx:zipdiff>
-    <unzip src="${maven.project.build.directory}/ear-${marketplace.quota.version}.zip"
+    <unzip src="${maven.project.build.directory}/ear-${maven.project.version}.zip"
            dest="${maven.project.build.directory}/marketplace/install">
       <patternset refid="quota.versus.cap" />
     </unzip>
@@ -60,15 +55,13 @@
      &lt;config addtemplate=&quot;quota&quot; /&gt;" />
       </then>
     </if>
-    <var name="install.content"
-         value="${install.content}${line.separator}
+    <var name="install.content" value="${install.content}${line.separator}
      &lt;/install&gt;${line.separator}" />
-    <echo file="${outdir}/marketplace/install.xml"
-          message="${install.content}" />
+    <echo file="${outdir}/marketplace/install.xml" message="${install.content}" />
 
-    <zip destfile="${maven.project.build.directory}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
+    <zip destfile="${maven.project.build.directory}/${maven.project.artifactId}-${maven.project.version}.zip"
          basedir="${maven.project.build.directory}/marketplace" />
-    <artifact:attach file="${maven.project.build.directory}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
+    <artifact:attach file="${maven.project.build.directory}/${maven.project.artifactId}-${maven.project.version}.zip"
                      type="zip" />
   </target>
 

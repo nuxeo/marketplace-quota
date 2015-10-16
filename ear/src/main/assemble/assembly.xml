@@ -1,10 +1,6 @@
-<project name="quota-ear-assembly"
-         default="build"
-         xmlns:nx="urn:nuxeo-build"
-         xmlns:artifact="urn:nuxeo-artifact">
+<project name="quota-ear-assembly" default="build" xmlns:nx="urn:nuxeo-build" xmlns:artifact="urn:nuxeo-artifact">
   <taskdef resource="org/nuxeo/build/antlib.xml" uri="urn:nuxeo-build" />
-  <taskdef resource="org/nuxeo/build/artifact/antlib.xml"
-           uri="urn:nuxeo-artifact" />
+  <taskdef resource="org/nuxeo/build/artifact/antlib.xml" uri="urn:nuxeo-artifact" />
 
   <target name="init" unless="init.done">
     <property name="outdir" value="${maven.project.build.directory}" />
@@ -18,9 +14,7 @@
     <artifact:nuxeo-expand includeTestScope="true" groupPrefixes="org.nuxeo" />
     <!-- For Nuxeo IDE being able to use that distribution as a SDK -->
     <artifact:print output="${outdir}/artifacts-quota.properties" mode="sdk" />
-    <artifact:print output="${outdir}/test-artifacts-quota.properties"
-                    mode="sdk"
-                    scopes="test" />
+    <artifact:print output="${outdir}/test-artifacts-quota.properties" mode="sdk" scopes="test" />
     <!-- Prints the graph for debugging purpose -->
     <artifact:print output="${outdir}/dependency-tree.log" />
   </target>
@@ -32,9 +26,7 @@
     <antcall target="build-standard" />
   </target>
 
-  <target name="build-standard"
-          description="Build default distribution"
-          depends="init">
+  <target name="build-standard" description="Build default distribution" depends="init">
     <copy todir="${nuxeo.ear}/bundles" overwrite="true">
       <artifact:set>
         <includes>
@@ -46,13 +38,10 @@
     <antcall target="third-party-libraries" />
 
     <copy file="${outdir}/artifacts-quota.properties" todir="${nuxeo.ear}" />
-    <copy file="${outdir}/test-artifacts-quota.properties"
-          todir="${nuxeo.ear}" />
+    <copy file="${outdir}/test-artifacts-quota.properties" todir="${nuxeo.ear}" />
 
-    <zip destfile="${outdir}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
-         basedir="${nuxeo.ear}" />
-    <artifact:attach file="${outdir}/${maven.project.artifactId}-${marketplace.quota.version}.zip"
-                     type="zip" />
+    <zip destfile="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip" basedir="${nuxeo.ear}" />
+    <artifact:attach file="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip" type="zip" />
   </target>
 
   <target name="third-party-libraries">

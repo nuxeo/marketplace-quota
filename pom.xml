@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.nuxeo.ecm.distribution</groupId>
     <artifactId>nuxeo-distribution</artifactId>
-    <version>6.0</version>
+    <version>6.0-HF22-SNAPSHOT</version>
   </parent>
 
   <groupId>org.nuxeo.marketplace.quota</groupId>
@@ -11,11 +12,6 @@
   <packaging>pom</packaging>
   <name>Nuxeo Quota Marketplace package</name>
   <version>1.4.1-SNAPSHOT</version>
-
-  <properties>
-    <marketplace.quota.version>1.4.1-SNAPSHOT</marketplace.quota.version>
-    <nuxeo.quota.version>6.0</nuxeo.quota.version>
-   </properties>
 
   <modules>
     <module>ear</module>
@@ -27,9 +23,6 @@
       <id>ftest</id>
       <modules>
         <module>ftest/webdriver</module>
-        <!-- <module>ftest/selenium</module> -->
-        <!-- <module>ftest/funkload</module> -->
-        <!-- <module>ftest/cmis</module> -->
       </modules>
     </profile>
   </profiles>
@@ -39,29 +32,14 @@
       <dependency>
         <groupId>org.nuxeo.marketplace.quota</groupId>
         <artifactId>ear</artifactId>
-        <version>${marketplace.quota.version}</version>
+        <version>${project.version}</version>
         <type>zip</type>
       </dependency>
       <dependency>
         <groupId>org.nuxeo.marketplace.quota</groupId>
         <artifactId>marketplace</artifactId>
-        <version>${marketplace.quota.version}</version>
+        <version>${project.version}</version>
         <type>zip</type>
-      </dependency>
-      <dependency>
-        <groupId>org.nuxeo.ecm.platform</groupId>
-        <artifactId>nuxeo-quota-core</artifactId>
-        <version>${nuxeo.quota.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.nuxeo.ecm.platform</groupId>
-        <artifactId>nuxeo-quota-web</artifactId>
-        <version>${nuxeo.quota.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.nuxeo.ecm.platform</groupId>
-        <artifactId>nuxeo-quota-automation</artifactId>
-        <version>${nuxeo.quota.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
