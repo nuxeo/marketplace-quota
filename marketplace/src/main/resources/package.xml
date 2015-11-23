@@ -111,7 +111,7 @@
     <platform>cap-6.0-HF*</platform>
   </platforms>
   <dependencies>
-    <package>nuxeo-@DISTRIB_VERSION</package>
+    <package>nuxeo-@DISTRIB_VERSION@</package>
   </dependencies>
   <license>LGPL 2.1</license>
   <license-url>http://www.gnu.org/licenses/lgpl-2.1.html</license-url>
