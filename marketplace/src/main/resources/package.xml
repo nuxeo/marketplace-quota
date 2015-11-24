@@ -108,6 +108,8 @@
   <supported>true</supported>
   <platforms>
     <platform>cap-@DISTRIB_VERSION@</platform>
+    <platform>cap-7.10</platform>
+    <platform>cap-7.10-HF*</platform>
   </platforms>
   <license>LGPL</license>
   <license-url>http://www.gnu.org/licenses/lgpl.html</license-url>
