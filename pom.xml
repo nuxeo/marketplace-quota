@@ -31,7 +31,7 @@
       <dependency>
         <groupId>org.nuxeo.ecm.platform</groupId>
         <artifactId>nuxeo-quota-automation</artifactId>
-        <version>${parent.version}</version>
+        <version>${nuxeo.quota.version}</version>
       </dependency>
       <dependency>
         <groupId>org.nuxeo.marketplace.quota</groupId>
