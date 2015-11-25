@@ -29,6 +29,11 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.nuxeo.ecm.platform</groupId>
+        <artifactId>nuxeo-quota-automation</artifactId>
+        <version>${parent.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.nuxeo.marketplace.quota</groupId>
         <artifactId>ear</artifactId>
         <version>${project.version}</version>
