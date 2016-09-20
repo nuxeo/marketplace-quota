@@ -33,11 +33,22 @@
       <patternset refid="quota.versus.cap" />
     </unzip>
 
+    <!-- Separate JSF-UI package -->
+    <mkdir dir="${outdir}/marketplace/install/bundles-jsf-ui" />
+    <move todir="${outdir}/marketplace/install/bundles-jsf-ui">
+      <fileset dir="${outdir}/marketplace/install/bundles">
+        <include name="nuxeo-quota-web-*.jar" />
+      </fileset>
+    </move>
+
     <!-- Generate install.xml file -->
     <var name="install.content" value="&lt;install&gt;" />
     <var name="install.content"
          value="${install.content}${line.separator}
      &lt;update file=&quot;${package.root}/install/bundles&quot; todir=&quot;${env.bundles}&quot; /&gt;" />
+    <var name="install.content"
+         value="${install.content}${line.separator}
+     &lt;update file=&quot;${package.root}/install/bundles-jsf-ui&quot; todir=&quot;${env.bundles}&quot; if=&quot;Packages.contains('nuxeo-jsf-ui')&quot; /&gt;" />
     <if>
       <available file="${outdir}/marketplace/install/lib" />
       <then>
