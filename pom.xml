@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.nuxeo.ecm.distribution</groupId>
     <artifactId>nuxeo-distribution</artifactId>
-    <version>8.4-SNAPSHOT</version>
+    <version>8.10-SNAPSHOT</version>
   </parent>
 
   <groupId>org.nuxeo.marketplace.quota</groupId>
@@ -14,7 +14,7 @@
 
   <properties>
     <marketplace.quota.version>1.6.3-SNAPSHOT</marketplace.quota.version>
-    <nuxeo.quota.version>8.4-SNAPSHOT</nuxeo.quota.version>
+    <nuxeo.quota.version>8.10-SNAPSHOT</nuxeo.quota.version>
   </properties>
 
   <modules>
