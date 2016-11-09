@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.nuxeo.marketplace.quota</groupId>
@@ -7,9 +8,9 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>webdriver</artifactId>
-  <name>Quota functional tests with WebDriver</name>
-  <description>Quota functional tests with WebDriver</description>
+  <artifactId>startup</artifactId>
+  <name>Quota Startup tests</name>
+  <description>Quota Startup tests</description>
   <packaging>pom</packaging>
 
   <properties>
@@ -18,24 +19,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-server-standalone</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-functional-tests</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.nuxeo.marketplace.quota</groupId>
       <artifactId>marketplace</artifactId>
       <type>zip</type>
@@ -43,8 +26,7 @@
     </dependency>
     <dependency>
       <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-distribution-tomcat</artifactId>
-      <classifier>nuxeo-cap</classifier>
+      <artifactId>nuxeo-server-tomcat</artifactId>
       <type>zip</type>
       <scope>test</scope>
     </dependency>
@@ -121,12 +103,6 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
-    </profile>
-    <profile>
-      <id>jboss</id>
-    </profile>
-    <profile>
-      <id>jbossear</id>
     </profile>
     <profile>
       <id>pgsql</id>
